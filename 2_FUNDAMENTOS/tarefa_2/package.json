@@ -1,0 +1,20 @@
+{
+  "name": "tarefa_2",
+  "version": "1.0.0",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "15_tarefa_02": "file:",
+    "15_tarefa_2": "file:",
+    "15_tarefa2": "file:",
+    "chalk": "^5.3.0",
+    "inquirer": "^12.0.0",
+    "tarefa_2": "file:"
+  }
+}

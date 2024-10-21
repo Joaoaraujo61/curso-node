@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "10_abstrcao_input": "file:",
     "inquirer": "^8.1.2"
   }
 }

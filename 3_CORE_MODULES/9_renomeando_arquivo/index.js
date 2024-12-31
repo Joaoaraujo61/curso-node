@@ -5,7 +5,7 @@ let arquivoNovo = 'novo.txt'
 fs.rename(arquivoAntigo, arquivoNovo, function(err){
     if(err){
         if(err.code === 'ENOENT'){
-            console.log(`${arquivoAntigo} não encontrado!`)
+            console.log(`${arquivoAntigo} não encontrado! O arquivo pode já ter sido renomeado`)
             return
         }else{
             console.log(err)

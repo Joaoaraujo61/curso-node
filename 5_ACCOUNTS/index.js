@@ -32,6 +32,7 @@ function operation(){
                 deposit()
                 break
             case 'Sacar':
+                withdraw()
                 break
             case 'Sair':
                 console.log(chalk.bgBlue.black('Obrigado por usar o Accounts!'))
@@ -57,8 +58,8 @@ function buildAccount() {
             message: 'Digite um nome para a sua conta:',
         },
     ])
-    .then((aswer) => {
-        const accountName = aswer['accountName']
+    .then((answer) => {
+        const accountName = answer['accountName']
 
         console.info(accountName)
 
@@ -180,4 +181,62 @@ function getAccountBalace(){
 
     })
     .catch((err) => console.log(`Erro: ${err}`))
+}
+//withdraw an amount from user account
+
+function withdraw(){
+    inquirer.prompt([
+        {
+            name: 'accountName',
+            message: 'Qual o nome da sua conta?',
+        }
+    ])
+    .then((answer) => {
+        const accountName = answer['accountName']
+        if(!checkAccount(accountName)){
+            return withdraw()
+        }
+
+        inquirer.prompt([
+            {
+                name: 'amount',
+                message: 'Qual valor deseja sacar?',
+            }
+        ])
+        .then((answer) =>{
+            const amount = answer['amount'] 
+
+            removeAmount(accountName, amount)
+        })
+        .catch((err) => console.log(`Erro: ${err}`))
+
+    })
+    .catch((err) => console.log(`Erro: ${err}`))
+}
+
+function removeAmount(accountName, amount) {
+    const accountData = getAccount(accountName)
+
+    if(!amount){
+        console.log(chalk.bgRed.black('Ocorreu um erro, insira uma valor válido!'))
+        return withdraw()
+    }
+    
+    if(accountData.balance < amount){
+        console.log(chalk.bgRed.black('Valor inváido!'))
+        return withdraw()
+    }
+
+    accountData.balance = parseFloat(accountData.balance) - parseFloat(amount)
+
+    fs.writeFileSync(
+        `accounts/${accountName}.json`,
+        JSON.stringify(accountData),
+        function(err){
+            console.log(err)
+        },
+    )
+
+    console.log(chalk.bgGreen.black(`Foi realizado um saque de ${amount} da sua conta!`))
+    operation()
 }

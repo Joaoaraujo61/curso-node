@@ -10,5 +10,8 @@
     "npm"
   ],
   "author": "Joao Pedro A. Dias",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "meu_projeto": "file:"
+  }
 }

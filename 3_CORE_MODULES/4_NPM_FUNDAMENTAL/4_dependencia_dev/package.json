@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "4_dependencia_dev": "file:",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

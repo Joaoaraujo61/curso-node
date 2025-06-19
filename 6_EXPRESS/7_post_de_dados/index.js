@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 
 const path = require('path')
-const basePath = path.join(__dirname, 'templates')
+const basePath = path.join(__dirname, './templates')
 
 //ler body
 app.use(
